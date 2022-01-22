@@ -1,19 +1,17 @@
 // ==UserScript==
 // @name         一键复制美剧链接
-// @version      1.6.7
+// @version      1.6.8
 // @description  识别常用网址的美剧链接，美剧天堂添加跳转豆瓣、IMDB、subscene、rarbg、piratebay入口，原始匹配网站云盘可以直接进入，可识别用户匹配网站中的链接。附本人写的字幕翻译程序，下载地址在附加信息中。
-// @author       Bleu
+// @author       bleu
 // @compatible   edge Tampermonkey
 // @license      MIT
 // @supportURL   https://greasyfork.org/zh-CN/scripts/430126-一键复制美剧链接/feedback
 // @match        https://*.meijutt.tv/content/*
 // @match        https://www.kpkuang.com/*
-// @match        https://www.mp4er.com/*
 // @match        https://91mjw.com/*
 // @match        https://www.bd2020.com/*
-// @match        https://www.ttmeiju.org/*
-// @match        https://yyds.fans/*
-// @match        https://www.rrdyw.cc/*
+// @match        https://www.ttmeijuvip.com/*
+// @match        https://www.xl720.com/*
 // @match        https://pan.xunlei.com/s/*
 // @match        https://pan.baidu.com/share/*
 // @match        https://115.com/s/*
@@ -33,7 +31,7 @@
 (function () {
     'use strict';
 
-    const webName = ['meijutt', '91mjw', 'kpkuang', 'mp4er', 'ttmeiju', 'rrdyw'];
+    const webName = ['meijutt', '91mjw', 'kpkuang', 'ttmeijuvip', 'xl720'];
     const panArry = ['xunlei', 'baidu', '115'];
     const pageURL = window.location.href;
     let sign;
@@ -99,10 +97,7 @@
                 case 'kpkuang':
                     box = $(".fed-down-item.fed-drop-item.fed-visible");
                     break;
-                case 'mp4er':
-                    box = $(".ui.middle.aligned.animated.list");
-                    break;
-                case 'ttmeiju':
+                case 'ttmeijuvip':
                     box = $("div.box_bor3");
                     break;
                 case 'rrdyw':
@@ -153,7 +148,7 @@
 
         findLinknode(buttdiv) {
             buttParent = buttdiv
-            if (sign == "meijutt") {
+            if (sign == "meijutt"||sign == "ttmeijuvip") {
                 for (let tabs of document.getElementsByClassName('tabs-list')) {
                     if (tabs.getAttribute('style') == 'display: block;' || tabs.getAttribute('style') == null) {
                         return tabs;
@@ -165,12 +160,7 @@
 
         noneLinkfunc(button) {
             openMark++;
-            if (sign === "mp4er") {
-                $(button).attr('value', '下载全部文件');
-                (openMark === 1) ? alert("确定下载全部文件吗？共有" + $(buttParent).find('a').length + "个\r\n 再次点击确认"): (openMark = 0, $(buttParent).find("a").each(function () {
-                    this.click();
-                }));
-            } else if (sign === "meijutt") {
+            if (sign === "meijutt") {
                 $(button).attr('value', '打开全部链接');
                 if (openMark === 1 || (openMark === 2 && oldParent != buttParent)) {
                     openMark = 1
@@ -276,31 +266,6 @@
                     pswd = $(value).find('span')[0].innerHTML;
                     GM_setValue(hash, pswd);
                 });
-            }
-            if (pageURL.indexOf('yyds') >= 0) {
-                linkParent = document.querySelector('.post-content').children;
-
-                linkParent.forEach((value) => {
-                    let rex1 = /https.[^"]*/,
-                        rex2 = /[\u4e00-\u9fa5]{3}：[\d\w]{4}/
-
-                    value.innerHTML.match(rex2) ? pswd = value.innerHTML.match(rex2)[0] : 0;
-                    value.innerHTML.match(rex1) ? hash = toolbox.getHash(value.innerHTML.match(rex1)[0]) : 0;
-                    pswd && hash ? GM_setValue(hash, pswd.replace(/[\u4e00-\u9fa5]{3}：/, '')) : 0;
-                });
-            }
-            if (pageURL.indexOf('rrdyw') >= 0) {
-                linkParent = $('.movie-txt').children()
-                linkParent = linkParent[linkParent.length - 2];
-                //$(linkParent).attr('txt','sf')
-                let rex1 = /https:\/\/pan.[^"]*/g;
-                let rex2 = /[\u4e00-\u9fa5]{3}[：\s][\d\w]{4}/g;
-                pswd = $(linkParent).find('span').text()
-                pswd = pswd.match(rex2);
-                hash = linkParent.innerHTML.match(rex1);
-                hash.forEach(function (value, index) {
-                    GM_setValue(toolbox.getHash(value), pswd[index].replace(/[\u4e00-\u9fa5]{3}[：\s]/, ''));
-                })
             }
         },
 
@@ -480,7 +445,7 @@
         },
 
         addDBicon() {
-            if (sign != "meijutt") {
+            if (!(sign === "meijutt"||sign === "ttmeijuvip")) {
                 return
             }
             let OriginalName = $('.o_r_contact').find('li')[1].outerText.replace('原名：', '').replace(/^\s*/, "").toLowerCase();
