@@ -23,8 +23,8 @@
 // @grant        GM_xmlhttpRequest
 // @grant        GM_info
 // @run-at       document-end
-// @require      https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js
-// @require      https://lib.baomitu.com/limonte-sweetalert2/7.33.1/sweetalert2.all.min.js
+// @require      https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js
+// @require      https://cdn.jsdelivr.net/npm/sweetalert2@11.1.0/dist/sweetalert2.all.min.js
 /* globals jQuery, $, waitForKeyElements , swal,Swal */
 // @namespace http://tampermonkey.net/
 // ==/UserScript==
