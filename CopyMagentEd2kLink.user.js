@@ -5,6 +5,7 @@
 // @author       bleu
 // @compatible   edge Tampermonkey
 // @license      MIT
+// @icon         https://cdn.jsdelivr.net/gh/Bleu404/PRPO@latest/png/magent.png
 // @supportURL   https://greasyfork.org/zh-CN/scripts/430126-一键复制美剧链接/feedback
 // @match        https://*.meijutt.tv/content/*
 // @match        https://www.kpkuang.com/*
@@ -535,7 +536,7 @@
                 document.body.removeChild(temp_form);
             });
             $('#rarbg').on('click', function () {
-                var rarbgURL = 'https://rarbgmirror.com/torrents.php?search=' + IMDBName;
+                var rarbgURL = 'https://rarbgmirror.org/torrents.php?search=' + IMDBName;
                 GM_openInTab(encodeURI(rarbgURL));
             });
             $('#piratebay').on('click', function () {
