@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         一键复制美剧链接
-// @version      1.6.9
+// @version      1.7.0
 // @description  识别常用网址的美剧链接，美剧天堂添加跳转豆瓣、IMDB、subscene、rarbg、piratebay入口，原始匹配网站云盘可以直接进入，可识别用户匹配网站中的链接。附本人写的字幕翻译程序，下载地址在附加信息中。
 // @author       bleu
 // @compatible   edge Tampermonkey
 // @license      MIT
-// @icon         https://cdn.jsdelivr.net/gh/Bleu404/PRPO@latest/png/magent.png
+// @icon         https://fastly.jsdelivr.net/gh/Bleu404/PRPO@latest/png/magent.png
 // @supportURL   https://greasyfork.org/zh-CN/scripts/430126-一键复制美剧链接/feedback
 // @match        https://*.meijutt.tv/content/*
 // @match        https://www.kpkuang.com/*
@@ -24,8 +24,8 @@
 // @grant        GM_xmlhttpRequest
 // @grant        GM_info
 // @run-at       document-end
-// @require      https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js
-// @require      https://cdn.jsdelivr.net/npm/sweetalert2@11.1.0/dist/sweetalert2.all.min.js
+// @require      https://fastly.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js
+// @require      https://fastly.jsdelivr.net/npm/sweetalert2@11.1.0/dist/sweetalert2.all.min.js
 /* globals jQuery, $, waitForKeyElements , swal,Swal */
 // @namespace http://tampermonkey.net/
 // ==/UserScript==
