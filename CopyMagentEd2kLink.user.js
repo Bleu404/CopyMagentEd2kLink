@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         一键复制美剧链接
-// @version      1.7.0
+// @version      1.7.1
 // @description  识别常用网址的美剧链接，美剧天堂添加跳转豆瓣、IMDB、subscene、rarbg、piratebay入口，原始匹配网站云盘可以直接进入，可识别用户匹配网站中的链接。附本人写的字幕翻译程序，下载地址在附加信息中。
 // @author       bleu
 // @compatible   edge Tampermonkey
@@ -457,7 +457,7 @@
             GM_addStyle('.ico_bleu{display: inline-flex;vertical-align: middle;margin: inherit;margin-left: 10px;}');
             GM_addStyle('.ico_bleu:active{box-shadow: 0 5px #666;transform: translateY(4px);}');
             let icon1 = '<div class="ico_bleu" id="subscene"><img style="width: 24px;height: 24px;" src="https://subscene.com/favicon.ico"/></div>';
-            let icon2 = '<div class="ico_bleu" id="rarbg"><img style="width: 24px;height: 24px;" src="https://rarbgmirror.com/favicon.ico"/></div>';
+            let icon2 = '<div class="ico_bleu" id="rarbg"><img style="width: 24px;height: 24px;" src="https://rargb.to/favicon.ico"/></div>';
             let icon3 = '<div class="ico_bleu" id="piratebay"><img style="width: 24px;height: 24px;" src="https://piratebay.live/static/img/tpblogo_sm_ny.gif"/></div>';
             let IMDBName = OriginalName.substr(0, OriginalName.indexOf("season"));
             IMDBName ? IMDBName : IMDBName = OriginalName;
@@ -536,7 +536,7 @@
                 document.body.removeChild(temp_form);
             });
             $('#rarbg').on('click', function () {
-                var rarbgURL = 'https://rarbgmirror.org/torrents.php?search=' + IMDBName;
+                var rarbgURL = 'https://rargb.to/search/?search=' + IMDBName;
                 GM_openInTab(encodeURI(rarbgURL));
             });
             $('#piratebay').on('click', function () {
