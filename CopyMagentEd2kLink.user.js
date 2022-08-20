@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         一键复制美剧链接
-// @version      1.7.1
+// @version      1.7.2
 // @description  识别常用网址的美剧链接，美剧天堂添加跳转豆瓣、IMDB、subscene、rarbg、piratebay入口，原始匹配网站云盘可以直接进入，可识别用户匹配网站中的链接。附本人写的字幕翻译程序，下载地址在附加信息中。
 // @author       bleu
 // @compatible   edge Tampermonkey
@@ -8,6 +8,7 @@
 // @icon         https://fastly.jsdelivr.net/gh/Bleu404/PRPO@latest/png/magent.png
 // @supportURL   https://greasyfork.org/zh-CN/scripts/430126-一键复制美剧链接/feedback
 // @match        https://*.meijutt.tv/content/*
+// @match        https://*.meijutt.net/content/*
 // @match        https://www.kpkuang.com/*
 // @match        https://91mjw.com/*
 // @match        https://www.bd2020.com/*
